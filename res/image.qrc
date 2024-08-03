@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="res">
+    <file>TP78foc.png</file>
+    <file>via.png</file>
+  </qresource>
+</RCC>
