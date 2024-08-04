@@ -52,4 +52,4 @@ class Ui_Form(object):
 "VIA工具"))
         self.Button_TP78.setText(_translate("Form", "TP78主键盘&TP78mini U盘模式配置工具"))
         self.Button_TP78FOC.setText(_translate("Form", "TP78foc固件升级工具"))
-import image_rc
+#import image_rc
