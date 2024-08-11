@@ -70,8 +70,18 @@ VIA工具</string>
      <height>146</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/TP78.png);</string>
+   </property>
    <property name="text">
-    <string>TP78主键盘 U盘模式配置工具</string>
+    <string>
+
+
+
+
+
+
+TP78主键盘 U盘模式配置工具</string>
    </property>
   </widget>
  </widget>

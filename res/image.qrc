@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="res">
+    <file>TP78.png</file>
+    <file>TP78mini.png</file>
     <file>左滑.png</file>
     <file>右滑.png</file>
     <file>TP78foc.png</file>
