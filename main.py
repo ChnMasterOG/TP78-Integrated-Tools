@@ -16,17 +16,21 @@ from PyQt5.QtCore import QUrl
 
 import requests
 import re
-import json
 import time
 import _thread
 import webbrowser
 import random
+import platform
 
 import tp78_foc_firmware_download as foc_download_lib
 import tp78_config_tool
 
 random.seed()
-
+system_platform = platform.system()
+if system_platform == 'Linux':
+    cur_file_path = os.path.dirname(os.path.realpath(sys.argv[0]))
+else:
+    cur_file_path = os.getcwd()
 software_version = "V1.0.0"
 download_url = ""
 version_news = ""
@@ -35,23 +39,26 @@ image_list = []
 cur_news_image_idx = 0
 
 information_news_list = [
-    "无私奉献不是天方夜谭，有时候，我们也可以做到。",
-    "如果你没有把握做到，最好就不要承诺。",
-    "不要害怕产生BUG，因为BUG永远解不完。",
-    "要么做第一个，要么做最好的一个。",
-    "设计是一个发现问题、而不是发现解决方案的过程。",
-    "想知道TP78v3，那是个秘密，不能告诉你。",
-    "永不放弃有两个原则，第一个原则是永不放弃，第二个原则就是：当你想放弃时回头看第一个原则。",
-    "不是井里没有水,而是挖的不够深。不是成功来得慢,而是努力的不够狠。",
-    "你看工具里为啥有灰的按钮，因为有人在偷懒没做。",
-    "如果你有更好的建议，请在QQ群里告诉我们。",
+    "● 无私奉献不是天方夜谭，有时候，我们也可以做到。",
+    "● 如果你没有把握做到，最好就不要承诺。",
+    "● 不要害怕产生BUG，因为BUG永远解不完。",
+    "● 要么做第一个，要么做最好的一个。",
+    "● 设计是一个发现问题、而不是发现解决方案的过程。",
+    "● 想知道TP78v3，那是个秘密，不能告诉你。",
+    "● 永不放弃有两个原则，第一个原则是永不放弃，第二个原则就是：当你想放弃时回头看第一个原则。",
+    "● 不是井里没有水,而是挖的不够深。不是成功来得慢,而是努力的不够狠。",
+    "● 你看工具里为啥有灰的按钮，因为有人在偷懒没做。",
+    "● 如果你有更好的建议，请在QQ群里告诉我们。",
 ]
+
+def get_cur_path_with(str):
+    return os.path.join(cur_file_path, str)
 
 def check_new_release():
     global download_url
     global version_news
     try:
-        response = requests.get("https://api.github.com/repos/ChnMasterOG/TP78-Integrated-Tools/releases").json()
+        response = requests.get("https://gitee.com/api/v5/repos/ChnMasterOG/TP78-Integrated-Tools/releases").json()
         for release in response:
             if release["tag_name"] >= software_version:
                 print("find new software version: %s" % (release["tag_name"]))
@@ -69,51 +76,50 @@ def check_new_images():
     global image_list
     global pixmap
     try:
-        response = requests.get("https://github.com/ChnMasterOG/TP78-Integrated-Tools/tree/main/buffer")
-        urls = re.findall("\w+\.png", response.text)
+        response = requests.get("https://gitee.com/ChnMasterOG/TP78-Integrated-Tools/tree/main/buffer")
+        urls = re.findall("TP78\w+\.png", response.text)
         new_urls = list(set(urls))
-        local_flist = os.listdir("./buffer")
+        local_flist = os.listdir(get_cur_path_with("./buffer"))
         for u in new_urls:
-            prefix_u = u.split("_")[0]
-            if prefix_u == "TP78":
-                prefix_u = u.split("_")[1]
-                download_new_image_flag = True
-                for f in local_flist:
-                    if prefix_u == f[:len(prefix_u)] and f[-4:] == ".png" and u <= f:   # 已存在图片
+            prefix_u = u.split("_")[1]
+            download_new_image_flag = True
+            for f in local_flist:
+                if f[:4] != "TP78":
+                    continue
+                prefix_local = f.split("_")[1]
+                if prefix_u == prefix_local[:len(prefix_u)] and f[-4:] == ".png":   # 已存在图片
+                    if u <= f:  # 图片版本是新的
                         download_new_image_flag = False
-                        break
-                if download_new_image_flag == True:
-                    print("download: " + u)
-                    image_resp = requests.get("https://raw.githubusercontent.com/ChnMasterOG/TP78-Integrated-Tools/main/res/" + u)
-                    with open(os.path.join("./buffer", u), "wb") as f:
-                        f.write(image_resp.content)
-                    os.remove(f)
+                    else:   # 删除旧的
+                        os.remove(os.path.join(get_cur_path_with("./buffer"), f))
+                    break
+            if download_new_image_flag == True:
+                print("download: " + u)
+                image_resp = requests.get("https://gitee.com/ChnMasterOG/TP78-Integrated-Tools/raw/main/buffer/" + u)
+                with open(os.path.join(get_cur_path_with("./buffer"), u), "wb") as f:
+                    f.write(image_resp.content)
     except:
         print("Network error!")
     image_list = []
-    local_flist = os.listdir("./buffer/")
+    local_flist = os.listdir(get_cur_path_with("./buffer"))
     l = len(local_flist)
     for f_idx in range(l):
         if local_flist[f_idx][-4:] == ".png":
             image_list.append(local_flist[f_idx])
-    newsWin.scene.clear()
-    pixmap = QPixmap(os.path.join("./buffer", image_list[0]))
-    newsWin.scene.addPixmap(pixmap)
 
 def check_new_via_json():
     global image_list
     global pixmap
     try:
-        response = requests.get("https://github.com/ChnMasterOG/TP78-Integrated-Tools/tree/main/buffer")
+        response = requests.get("https://gitee.com/ChnMasterOG/TP78-Integrated-Tools/tree/main/buffer")
         urls = re.findall("\w+\.json", response.text)
         new_urls = list(set(urls))
         for u in new_urls:
             if u.find("layout") != -1:
                 print("download: " + u)
-                image_resp = requests.get("https://raw.githubusercontent.com/ChnMasterOG/TP78-Integrated-Tools/main/res/" + u)
-                with open(os.path.join("./buffer", u), "wb") as f:
+                image_resp = requests.get("https://gitee.com/ChnMasterOG/TP78-Integrated-Tools/raw/main/buffer/" + u)
+                with open(os.path.join(get_cur_path_with("./buffer"), u), "wb") as f:
                     f.write(image_resp.content)
-                os.remove(f)
     except:
         print("Network error!")
 
@@ -192,7 +198,7 @@ class NewsWindow(QMainWindow,ui_news.Ui_Form):
         if cur_news_image_idx >= len(image_list):
             cur_news_image_idx = 0
         self.scene.clear()
-        pixmap = QPixmap(os.path.join("./buffer", image_list[cur_news_image_idx]))
+        pixmap = QPixmap(os.path.join(get_cur_path_with("./buffer"), image_list[cur_news_image_idx]))
         self.scene.addPixmap(pixmap)
 
     def close_button_on_click(self):
@@ -222,7 +228,7 @@ class MainWindow(QMainWindow,ui_main.Ui_Form):
         self.tp78_news_check_worker.note_news.connect(self.tp78news_show)
         self.tp78_news_check_worker.new_release.connect(self.tp78news_release_set)
         self.news_checker_thread.started.connect(self.tp78_news_check_worker.run)
-        self.news_checker_thread.finished.connect(self.news_checker_thread.deleteLater)
+        #self.news_checker_thread.finished.connect(self.news_checker_thread.deleteLater)
         self.news_checker_thread.start()
 
     def tp78_button_on_click(self):
@@ -232,6 +238,9 @@ class MainWindow(QMainWindow,ui_main.Ui_Form):
         tp78focWin.show()
     
     def tp78news_show(self, news):
+        pixmap = QPixmap(os.path.join(get_cur_path_with("./buffer"), image_list[0]))
+        newsWin.scene.clear()
+        newsWin.scene.addPixmap(pixmap)
         newsWin.show()
         newsWin.note_label.setText(news)
 
