@@ -4,10 +4,10 @@
 import pygame
 import copy
 import os
-import kbm_detection
-import io_process
+from tp78_config_tool import kbm_detection
+from tp78_config_tool import io_process
 import _thread
-from keyboard_cfg import *
+from tp78_config_tool.keyboard_cfg import *
 
 workpwd = ""
 keyboard_matrix = copy.deepcopy(keyboard_default_matrix)
@@ -38,11 +38,11 @@ KEY_USERDIFINED_RECT_POS = (keyboard_core_xy_base[0]+300, keyboard_core_xy_base[
 class Keyboard(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.img = pygame.image.load("../res/keyboard.png").convert_alpha()
+        self.img = pygame.image.load("./res/keyboard.png").convert_alpha()
         self.core = (1280/2, keyboard_core_xy_base[1]+175)
         self.key_front = pygame.font.SysFont('arial', 16)
-        self.title_front = pygame.font.Font('../res/font2.ttf', 24)
-        self.desc_front = pygame.font.Font('../res/font1.ttf', 16)
+        self.title_front = pygame.font.Font('./res/font2.ttf', 24)
+        self.desc_front = pygame.font.Font('./res/font1.ttf', 16)
         self.color = [[WHITE for i in range(keyboard_col_size)] for j in range(keyboard_row_size)]
         self.rect = [[0 for i in range(keyboard_col_size)] for j in range(keyboard_row_size)]
         self.input_rect = pygame.Rect(*KEY_USERDIFINED_RECT_POS)
@@ -137,17 +137,17 @@ class Keyboard(pygame.sprite.Sprite):
         screen.blit(text, text.get_rect(topleft = KEY_LOG_POS))
         text = self.desc_front.render(str(self.userdefkey), True, self.input_text_color)
         screen.blit(text, text.get_rect(topleft = KEY_USERDIFINED_TEXT_POS))
-        logo_img = pygame.image.load("../res/logo.png").convert_alpha()
+        logo_img = pygame.image.load("./res/logo.png").convert_alpha()
         screen.blit(logo_img, logo_img.get_rect(topleft = KEY_LOGO_POS))
         pygame.draw.rect(screen, CYAN, self.input_rect, 2)
         if int(keyboard_matrix[self.now_key_x][self.now_key_y]) in keyboard_page_desc:
             text = self.desc_front.render(keyboard_page_desc[keyboard_matrix[self.now_key_x][self.now_key_y]], True, WHITE)
             screen.blit(text, text.get_rect(topleft = KEY_DESCRIPTION2_POS))
-        if os.path.exists("../res/%d.png" % (keyboard_matrix[self.now_key_x][self.now_key_y])):
-            img = pygame.image.load("../res/%d.png" % (keyboard_matrix[self.now_key_x][self.now_key_y])).convert_alpha()
+        if os.path.exists("./res/%d.png" % (keyboard_matrix[self.now_key_x][self.now_key_y])):
+            img = pygame.image.load("./res/%d.png" % (keyboard_matrix[self.now_key_x][self.now_key_y])).convert_alpha()
             screen.blit(img, img.get_rect(topleft = KEY_DESCRIPTION3_POS))
         else:
-            img = pygame.image.load("../res/default.png").convert_alpha()
+            img = pygame.image.load("./res/default.png").convert_alpha()
             screen.blit(img, img.get_rect(topleft = KEY_DESCRIPTION3_POS))
 
     def clicked_detection(self, pos):

@@ -35,6 +35,11 @@
      <height>61</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+    </font>
+   </property>
    <property name="text">
     <string>Note:</string>
    </property>

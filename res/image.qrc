@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="res">
+    <file>磁轴工具.png</file>
+    <file>更新固件.png</file>
+    <file>选择固件.png</file>
     <file>TP78.png</file>
     <file>TP78mini.png</file>
     <file>左滑.png</file>

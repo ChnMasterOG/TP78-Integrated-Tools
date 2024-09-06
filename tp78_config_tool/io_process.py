@@ -1,8 +1,8 @@
 # Copyright (c) 2023 ChnMasterOG
 # SPDX-License-Identifier: GPL-3.0
 
-from tp78_keyboard import *
-from keyboard_cfg import *
+from tp78_config_tool.tp78_keyboard import *
+from tp78_config_tool.keyboard_cfg import *
 
 processing_output = 0
 

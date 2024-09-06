@@ -3,7 +3,7 @@
 
 import pygame
 import windnd
-from io_process import read_keyboard_cfg
+from tp78_config_tool.io_process import read_keyboard_cfg
 
 class Dragfiles():
     def __init__(self, screen) -> None:

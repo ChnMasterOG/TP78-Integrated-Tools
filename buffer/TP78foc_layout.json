@@ -1,0 +1,173 @@
+{
+  "name": "TP78_foc",
+  "vendorId": "0x0418",
+  "productId": "0x78A1",
+  "menus": [
+      {
+        "label": "Configurations",
+        "content": [
+          {
+            "label": "GlobalSettings",
+            "content": [
+              {
+                "label": "Macro1_Mapping",
+                "type": "dropdown",
+                "options": [
+                  ["mapping to index 0", 0],
+                  ["mapping to index 2", 2],
+                  ["mapping to index 4", 4],
+                  ["mapping to index 6", 6],
+                  ["mapping to index 8", 8],
+                  ["mapping to index 10", 10],
+                  ["mapping to index 12", 12],
+                  ["mapping to index 14", 14],
+                  ["mapping to index 16", 16],
+                  ["mapping to index 18", 18]
+                ],
+                "content": ["id_macro_mapping", 0, 1]
+              }, {
+                "label": "Macro2_Mapping",
+                "type": "dropdown",
+                "options": [
+                  ["mapping to index 0", 0],
+                  ["mapping to index 2", 2],
+                  ["mapping to index 4", 4],
+                  ["mapping to index 6", 6],
+                  ["mapping to index 8", 8],
+                  ["mapping to index 10", 10],
+                  ["mapping to index 12", 12],
+                  ["mapping to index 14", 14],
+                  ["mapping to index 16", 16],
+                  ["mapping to index 18", 18]
+                ],
+                "content": ["id_macro_mapping", 0, 2]
+              }, {
+                "label": "Macro3_Mapping",
+                "type": "dropdown",
+                "options": [
+                  ["mapping to index 0", 0],
+                  ["mapping to index 2", 2],
+                  ["mapping to index 4", 4],
+                  ["mapping to index 6", 6],
+                  ["mapping to index 8", 8],
+                  ["mapping to index 10", 10],
+                  ["mapping to index 12", 12],
+                  ["mapping to index 14", 14],
+                  ["mapping to index 16", 16],
+                  ["mapping to index 18", 18]
+                ],
+                "content": ["id_macro_mapping", 0, 3]
+              }
+            ]
+          }, {
+            "label": "MacroMouseSettings",
+            "content": [
+              {
+                "label": "Macro1_MouseControl",
+                "type": "dropdown",
+                "options": [
+                  ["None", 0],
+                  ["LeftBtn", 1],
+                  ["RightBtn", 2],
+                  ["MidBtn", 4],
+                  ["ScrollUp", 24],
+                  ["ScrollDown", 8]
+                ],
+                "content": ["id_macro1_mouse_control", 1, 1]
+              }, {
+                "label": "Macro2_MouseControl",
+                "type": "dropdown",
+                "options": [
+                  ["None", 0],
+                  ["LeftBtn", 1],
+                  ["RightBtn", 2],
+                  ["MidBtn", 4],
+                  ["ScrollUp", 24],
+                  ["ScrollDown", 8]
+                ],
+                "content": ["id_macro2_mouse_control", 1, 2]
+              }, {
+                "label": "Macro3_MouseControl",
+                "type": "dropdown",
+                "options": [
+                  ["None", 0],
+                  ["LeftBtn", 1],
+                  ["RightBtn", 2],
+                  ["MidBtn", 4],
+                  ["ScrollUp", 24],
+                  ["ScrollDown", 8]
+                ],
+                "content": ["id_macro3_mouse_control", 1, 3]
+              }, {
+                "label": "Macro4_MouseControl",
+                "type": "dropdown",
+                "options": [
+                  ["None", 0],
+                  ["LeftBtn", 1],
+                  ["RightBtn", 2],
+                  ["MidBtn", 4],
+                  ["ScrollUp", 24],
+                  ["ScrollDown", 8]
+                ],
+                "content": ["id_macro4_mouse_control", 1, 4]
+              }, {
+                "label": "Macro5_MouseControl",
+                "type": "dropdown",
+                "options": [
+                  ["None", 0],
+                  ["LeftBtn", 1],
+                  ["RightBtn", 2],
+                  ["MidBtn", 4],
+                  ["ScrollUp", 24],
+                  ["ScrollDown", 8]
+                ],
+                "content": ["id_macro5_mouse_control", 1, 5]
+              }, {
+                "label": "Macro6_MouseControl",
+                "type": "dropdown",
+                "options": [
+                  ["None", 0],
+                  ["LeftBtn", 1],
+                  ["RightBtn", 2],
+                  ["MidBtn", 4],
+                  ["ScrollUp", 24],
+                  ["ScrollDown", 8]
+                ],
+                "content": ["id_macro6_mouse_control", 1, 6]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+  "matrix": {"rows": 4, "cols": 4},
+  "layouts": {
+    "labels": [],
+    "keymap": [
+      [
+        "3,0",
+        "3,1",
+        "3,2",
+        "3,3"
+      ],
+      [
+        "2,0",
+        "2,1",
+        "2,2",
+        "2,3"
+      ],
+      [
+        "1,0",
+        "1,1",
+        "1,2",
+        "1,3"
+      ],
+      [
+        "0,0",
+        "0,1",
+        "0,2",
+        "0,3"
+      ]
+    ]
+  }
+}

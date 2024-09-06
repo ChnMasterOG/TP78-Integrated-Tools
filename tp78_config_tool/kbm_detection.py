@@ -3,7 +3,7 @@
 
 from pynput import keyboard
 from pynput import mouse
-from keyboard_cfg import keyboard_pynput_to_index
+from tp78_config_tool.keyboard_cfg import keyboard_pynput_to_index
 
 keycode = 0
 keycode_update = False

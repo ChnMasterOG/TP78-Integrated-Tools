@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>507</width>
-    <height>291</height>
+    <height>317</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>10</x>
      <y>10</y>
      <width>491</width>
-     <height>271</height>
+     <height>301</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -27,6 +27,7 @@
      <widget class="QLabel" name="label">
       <property name="font">
        <font>
+        <family>Times New Roman</family>
         <pointsize>19</pointsize>
        </font>
       </property>
@@ -42,18 +43,71 @@
      </widget>
     </item>
     <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLabel" name="selected_firmware_path_label">
+        <property name="font">
+         <font>
+          <family>小赖字体 SC</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>固件路径：</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="Button_selectfirmware">
+        <property name="font">
+         <font>
+          <family>小赖字体 SC</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/res/选择固件.png);</string>
+        </property>
         <property name="text">
-         <string>选择固件</string>
+         <string>
+
+
+
+
+
+
+
+
+
+选择固件</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="Button_update">
+        <property name="font">
+         <font>
+          <family>小赖字体 SC</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/res/更新固件.png)</string>
+        </property>
         <property name="text">
-         <string>更新固件</string>
+         <string>
+
+
+
+
+
+
+
+
+
+更新固件</string>
         </property>
        </widget>
       </item>
@@ -69,6 +123,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res/image.qrc"/>
+ </resources>
  <connections/>
 </ui>

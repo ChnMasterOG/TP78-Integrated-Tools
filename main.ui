@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>516</width>
-    <height>317</height>
+    <width>765</width>
+    <height>314</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,11 +16,16 @@
   <widget class="QPushButton" name="Button_TP78FOC">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>160</y>
+     <x>260</x>
+     <y>10</y>
      <width>246</width>
      <height>146</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>小赖字体 SC</family>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">image: url(:/res/TP78foc.png);</string>
@@ -39,11 +44,16 @@ TP78foc固件升级工具</string>
   <widget class="QPushButton" name="Button_VIA">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>10</y>
+     <x>10</x>
+     <y>160</y>
      <width>246</width>
      <height>146</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>小赖字体 SC</family>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">image: url(:/res/via.png);</string>
@@ -70,6 +80,11 @@ VIA工具</string>
      <height>146</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>小赖字体 SC</family>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">image: url(:/res/TP78.png);</string>
    </property>
@@ -84,42 +99,67 @@ VIA工具</string>
 TP78主键盘 U盘模式配置工具</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="Button_TP78MINI">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>10</y>
+     <width>246</width>
+     <height>146</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>小赖字体 SC</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/TP78mini.png);</string>
+   </property>
+   <property name="text">
+    <string>
+
+
+
+
+
+
+TP78mini U盘模式配置工具</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Button_MagnetAxis">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>160</y>
+     <width>246</width>
+     <height>146</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>小赖字体 SC</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/res/磁轴工具.png);</string>
+   </property>
+   <property name="text">
+    <string>
+
+
+
+
+
+
+
+
+TP78系列磁轴设置工具</string>
+   </property>
+  </widget>
  </widget>
  <resources>
   <include location="res/image.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>Button_VIA</sender>
-   <signal>clicked()</signal>
-   <receiver>Form</receiver>
-   <slot>hide()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>630</x>
-     <y>120</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>395</x>
-     <y>273</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Button_TP78FOC</sender>
-   <signal>clicked()</signal>
-   <receiver>Form</receiver>
-   <slot>hide()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>134</x>
-     <y>296</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>259</x>
-     <y>189</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

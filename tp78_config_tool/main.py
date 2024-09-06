@@ -4,10 +4,10 @@
 import pygame
 import os
 import sys
-from dragfiles import Dragfiles
-import tp78_keyboard
-from tp78_keyboard import Keyboard
-from kbm_detection import listen_key_nblock
+from tp78_config_tool.dragfiles import Dragfiles
+from tp78_config_tool import tp78_keyboard
+from tp78_config_tool.tp78_keyboard import Keyboard
+from tp78_config_tool.kbm_detection import listen_key_nblock
 
 def tp78_config_tool_main():
     tp78_keyboard.workpwd = os.getcwd()
@@ -28,11 +28,11 @@ def tp78_config_tool_main():
     pygame.init()
 
     pygame.display.set_caption('TP78 Keyboard Config Tool')
-    pygame_icon = pygame.image.load('../res/icon.png')
+    pygame_icon = pygame.image.load('./res/icon.png')
     pygame.display.set_icon(pygame_icon)
     window = pygame.display.set_mode((1280,768))
     window.fill((0, 0, 0))
-    bg = pygame.image.load("../res/bg.png")
+    bg = pygame.image.load("./res/bg.png")
     # my_switch = Switch()
     # my_button = Button()
     my_dragfiles = Dragfiles(window)
