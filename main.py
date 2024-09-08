@@ -60,7 +60,7 @@ def check_new_release():
     try:
         response = requests.get("https://gitee.com/api/v5/repos/ChnMasterOG/TP78-Integrated-Tools/releases").json()
         for release in response:
-            if release["tag_name"] >= software_version:
+            if release["tag_name"] > software_version:
                 print("find new software version: %s" % (release["tag_name"]))
                 download_url = release["assets"][0]["browser_download_url"]
                 print("get download url: %s" % (download_url))
