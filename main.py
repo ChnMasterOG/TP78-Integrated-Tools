@@ -58,7 +58,7 @@ def check_new_release():
     global download_url
     global version_news
     try:
-        response = requests.get("https://gitee.com/api/v5/repos/ChnMasterOG/TP78-Integrated-Tools/releases").json()
+        response = requests.get("https://api.github.com/repos/ChnMasterOG/TP78-Integrated-Tools/releases").json()
         for release in response:
             if release["tag_name"] > software_version:
                 print("find new software version: %s" % (release["tag_name"]))
